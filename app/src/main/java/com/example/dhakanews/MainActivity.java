@@ -93,6 +93,8 @@ public class MainActivity extends AppCompatActivity {
                                 DownloadManager.Request mRequest = new DownloadManager.Request(Uri.parse(DownloadImageURL));
                                 mRequest.allowScanningByMediaScanner();
                                 mRequest.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+								String fileName = URLUtil.guessFileName(DownloadImageURL, null, null);
+								mRequest.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName);
                                 DownloadManager mDownloadManager = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
                                 mDownloadManager.enqueue(mRequest);
 
